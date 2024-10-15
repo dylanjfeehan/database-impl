@@ -1,4 +1,60 @@
-site_name: My Docs
-site_url: https://mydomain.org/mysite
+site_name: Database Impl
+site_url: https://dylanjfeehan.github.io/database-impl
 theme:
   name: material
+  features:
+    - navigation.instant
+    - navigation.tabs
+    - content.code.copy
+    - content.code.annotate
+    - content.tooltips
+  icon:
+    repo: fontawesome/brands/github
+    annotation: material/plus-circle
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      primary: blue
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      primary: blue
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+# enables URL to cne-documentation GitHub repo in top-right corner of the site
+repo_url: https://github.com/dylanjfeehan/database-impl
+repo_name: database-impl
+
+plugins:
+  - search:
+      enabled: true
+  - tags:
+      tags_file: index.md
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - md_in_html
+  - pymdownx.superfences
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets:
+      auto_append:
+        - glossary/abbreviations.md
+        - glossary/definitions.md
+
+watch: 
+  - glossary
