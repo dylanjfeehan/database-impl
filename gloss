@@ -38,31 +38,34 @@ def wordHasMultiCaps(word):
 def getAbbrKeys(word):
 	lowerWordSingular = word.lower()
 	upperWordPlural = word.upper()
-	lowerWordPlural = lowerWordSingular + "s"
-	upperWordSingular = upperWordPlural + "s"
+	lowerWordPlural = lowerWordSingular + pluralizer
+	upperWordSingular = upperWordPlural + pluralizer
 	return [lowerWordSingular, lowerWordPlural, upperWordPlural, upperWordSingular]
 
 def getDefKeys(word):
 	entries = []
 	uncap = word.lower()
 	entries.append(uncap)
-	entries.append(uncap + "s")
+	entries.append(uncap + pluralizer)
 	capitalized = uncap.capitalize()
 	entries.append(capitalized)
-	entries.append(capitalized + "s")
+	entries.append(capitalized + pluralizer)
 
 	if(wordHasMultiCaps(word)):
 		entries.append(word)
-		entries.append(word + "s")
+		entries.append(word + pluralizer)
 	return entries
 	
 entries = getAbbrKeys(word) if(type == "abbr") else getDefKeys(word)
 
 def writeToAbbr(entries):
+	print("hello")
+	print(entries)
 	with open("./glossary/abbreviations.md", "a") as file:
 		file.write("\n")
 		for entry in entries:
 			output = glossTemplate.substitute(k=entry, v=definition) + "\n"
+			print(output)
 			file.write(output)
 
 def writeToDef(entries):
